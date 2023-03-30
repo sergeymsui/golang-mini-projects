@@ -25,7 +25,6 @@ func showAll() {
 	if err != nil {
 		fmt.Println(err)
 	}
-	fmt.Println("Successfully Opened data.json")
 	// defer the closing of our jsonFile so that we can parse it later on
 	defer jsonFile.Close()
 
@@ -49,13 +48,15 @@ func main() {
 
 	menu := "\t1) Вывести меню\n" +
 		"\t2) Вывести все книги магазина\n" +
+		"\t3) Добавить книгу в магазин\n" +
 		"\t0) Выход из программы\n"
 
 	fmt.Print("Это программа для вывода содержимого файла JSON" +
 		"с данными о книгах в книжном магазине\n" +
 		"Для продолжения работы выберите нужный пункт меню\n" + menu)
+
 	for {
-		var key int
+		var key = -1
 		fmt.Scanf("%d\n", &key)
 
 		switch key {
@@ -66,6 +67,9 @@ func main() {
 			fmt.Printf("Выберите нужный пункт меню:\n" + menu)
 		case 2:
 			fmt.Printf("Вывод:")
+			showAll()
+		case 3:
+			//
 		default:
 			fmt.Printf("Ввод данных был произведен неверно! Повторите ввод: ")
 		}
